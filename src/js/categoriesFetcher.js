@@ -1,5 +1,11 @@
 let APIURL = 'https://pablo.hd.free.fr/django/api/v1/'
 
+function createDivWithClass(className) {
+    let div = document.createElement('div')
+    div.setAttribute('class', className)
+    return div
+}
+
 function getRatingStars(rating) {
     let roundedRating = Math.ceil(rating * 2) / 4
 
@@ -48,6 +54,7 @@ function fetchResults(results, category) {
 
         let carouselId = 'carousel-' + category
         document.getElementById('carousel-' + category).appendChild(movie)
+        addModal(movie)
     }
 }
 

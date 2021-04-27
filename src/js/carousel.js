@@ -9,8 +9,8 @@ class Carousel {
         this.items = []
         this.currentItem = 0
 
-        this.root = this.createDivWithClass('carousel')
-        this.container = this.createDivWithClass('carousel__container')
+        this.root = createDivWithClass('carousel')
+        this.container = createDivWithClass('carousel__container')
         this.root.setAttribute('tabindex', '0')
         this.root.appendChild(this.container)
         this.element.appendChild(this.root)
@@ -28,7 +28,7 @@ class Carousel {
                     _this.id_list.push(id)
                 }
                 _this.items.push(e.target)
-                let item = _this.createDivWithClass('carousel__item')
+                let item = createDivWithClass('carousel__item')
                 item.appendChild(e.target)
                 _this.container.appendChild(item)
                 _this.setCarouselWidth()
@@ -43,8 +43,8 @@ class Carousel {
     }
 
     createNavButtons() {
-        let nextButton = this.createDivWithClass('carousel__next')
-        let prevButton = this.createDivWithClass('carousel__prev')
+        let nextButton = createDivWithClass('carousel__next')
+        let prevButton = createDivWithClass('carousel__prev')
         this.root.appendChild(nextButton)
         this.root.appendChild(prevButton)
         nextButton.addEventListener('click', this.next.bind(this))
@@ -74,12 +74,6 @@ class Carousel {
         this.container.style.transform =
             'translate3d(' + translateX + '%, 0, 0)'
         this.currentItem = index
-    }
-
-    createDivWithClass(className) {
-        let div = document.createElement('div')
-        div.setAttribute('class', className)
-        return div
     }
 }
 
