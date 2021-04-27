@@ -86,7 +86,11 @@ class Carousel {
 var carousels = []
 
 let onReady = function () {
-    carousels.push(new Carousel(document.querySelector('#carousel1')))
+    for (var i = 0; i < genres.length; i++) {
+        carousels.push(
+            new Carousel(document.querySelector('#carousel-' + genres[i])),
+        )
+    }
 }
 
 if (document.readyState !== 'loading') {

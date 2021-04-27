@@ -1,3 +1,8 @@
+.carousel__title {
+    font-size: 26px;
+    margin-left: 30px;
+}
+
 .item {
     margin: 40px 10px;
     margin-left: 50px;
