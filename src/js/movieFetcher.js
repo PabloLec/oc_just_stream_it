@@ -6,7 +6,7 @@ function getRatingStars(rating) {
     fullStar = '<i class="fas fa-star fa-sm" style="color:#7957ec"></i>'
     halfStar =
         '<i class="fas fa-star-half-alt fa-sm" style="color:#7957ec"></i>'
-    emptyStar = '<i class="fas fa-star fa-sm"></i>'
+    emptyStar = '<i class="fas fa-star fa-sm" style="color:#2a2d2e"></i>'
 
     let starRating =
         fullStar.repeat(roundedRating - (roundedRating % 1)) +

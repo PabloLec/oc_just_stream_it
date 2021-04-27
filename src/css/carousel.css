@@ -1,6 +1,7 @@
 .carousel__title {
     font-size: 26px;
     margin-left: 30px;
+    color: #d8d4cf;
 }
 
 .item {
@@ -30,17 +31,18 @@
 .item__body {
     padding-bottom: 25px;
     padding-top: 25px;
+    background-color: #131516;
 }
 
 .item__title {
     font-size: 16px;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #232323;
+    color: #d8d4cf;
 }
 
 .item__description {
-    color: #585858;
+    color: #d8d4cf;
 }
 
 .items {
