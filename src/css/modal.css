@@ -58,6 +58,13 @@
     margin-bottom: 20px;
 }
 
+.modal__globalinfo {
+    border: 1px solid black;
+    margin: 0 5px 0 5px;
+    padding: 2px 5px 2px 5px;
+    background-color: #1e2020;
+}
+
 .modal__origin,
 .modal__genre,
 .modal__director,

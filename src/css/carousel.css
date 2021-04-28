@@ -78,7 +78,7 @@
     border-radius: 50%;
     top: 50%;
     margin-top: -20px;
-    right: -20px;
+    right: 10px;
     box-shadow: 0 15px 35px #3232321a, 0 5px 15px #0000001a;
     cursor: pointer;
     transition: transform 0.3s, opacity 0.3s;
@@ -87,7 +87,7 @@
 .carousel__prev {
     background-image: url(left.svg);
     right: auto;
-    left: -20px;
+    left: 10px;
 }
 
 .carousel__next:hover,

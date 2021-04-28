@@ -32,7 +32,7 @@ function populateModal(movieInfo) {
     if (rated === 'Not rated or unkown rating') {
         rated = ''
     } else {
-        rated = ' - ' + rated + '+'
+        rated = rated + '+'
     }
 
     let duration = movieInfo['duration']
@@ -49,23 +49,43 @@ function populateModal(movieInfo) {
     if (boxOffice === null) {
         boxOffice = ''
     } else if (boxOffice >= 1e9) {
-        boxOffice = ' - ' + (boxOffice / 1e9).toPrecision(3) + 'Md$'
+        boxOffice = (boxOffice / 1e9).toPrecision(3) + 'Md$'
     } else if (boxOffice >= 1e6) {
-        boxOffice = ' - ' + (boxOffice / 1e6).toPrecision(3) + 'Mn$'
+        boxOffice = (boxOffice / 1e6).toPrecision(3) + 'Mn$'
     } else if (boxOffice >= 1e3) {
-        boxOffice = ' - ' + (boxOffice / 1e3).toPrecision(3) + 'k$'
+        boxOffice = (boxOffice / 1e3).toPrecision(3) + 'k$'
     } else {
-        boxOffice = ' - ' + boxOffice + ' $'
+        boxOffice = boxOffice + ' $'
     }
 
-    globalInfos.innerHTML =
-        date +
-        ' - ' +
-        getRatingStars(movieInfo['imdb_score']) +
-        rated +
-        ' - ' +
-        duration +
-        boxOffice
+    let dateDiv = document.createElement('span')
+    dateDiv.setAttribute('class', 'modal__globalinfo')
+    dateDiv.innerHTML = date
+    globalInfos.appendChild(dateDiv)
+
+    let starsDiv = document.createElement('span')
+    starsDiv.setAttribute('class', 'modal__globalinfo')
+    starsDiv.innerHTML = getRatingStars(movieInfo['imdb_score'])
+    globalInfos.appendChild(starsDiv)
+
+    if (rated != '') {
+        let ratedDiv = document.createElement('span')
+        ratedDiv.setAttribute('class', 'modal__globalinfo')
+        ratedDiv.innerHTML = rated
+        globalInfos.appendChild(ratedDiv)
+    }
+
+    let durationDiv = document.createElement('span')
+    durationDiv.setAttribute('class', 'modal__globalinfo')
+    durationDiv.innerHTML = duration
+    globalInfos.appendChild(durationDiv)
+
+    if (boxOffice != '') {
+        let boxOfficeDiv = document.createElement('span')
+        boxOfficeDiv.setAttribute('class', 'modal__globalinfo')
+        boxOfficeDiv.innerHTML = boxOffice
+        globalInfos.appendChild(boxOfficeDiv)
+    }
 
     elements.push(globalInfos)
 
