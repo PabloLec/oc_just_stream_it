@@ -1,5 +1,3 @@
-let APIURL = 'https://pablo.hd.free.fr/django/api/v1/'
-
 function createDivWithClass(className) {
     let div = document.createElement('div')
     div.setAttribute('class', className)

@@ -69,8 +69,12 @@ function populateModal(movieInfo) {
 
     elements.push(globalInfos)
 
+    let summary = createDivWithClass('modal__summary')
+    summary.innerHTML = '<hr>' + movieInfo['description'] + '<hr>'
+    elements.push(summary)
+
     let origin = createDivWithClass('modal__origin')
-    origin.innerHTML = '<b>Origine:</b> ' + movieInfo['countries']
+    origin.innerHTML = '<b>Origine:</b> ' + movieInfo['countries'].join(', ')
     elements.push(origin)
 
     let genre = createDivWithClass('modal__genre')
@@ -97,3 +101,32 @@ function populateModal(movieInfo) {
         modal.appendChild(elements[i])
     }
 }
+
+async function searchFeaturedMovie(page) {
+    const response = await fetch(
+        APIURL + 'titles/?page=' + page + '&sort_by=-year,-imdb_score,-votes',
+    )
+    const data = await response.json()
+    const results = data['results']
+    for (var i = 0; i < results.length; i++) {
+        if (results[i]['votes'] > 300) {
+            return results[i]['id']
+        }
+    }
+}
+
+async function getFeaturedMovie() {
+    const featuredMovieId = await searchFeaturedMovie((page = 1))
+    let featuredMovie = await queryMovieInfo(featuredMovieId)
+
+    let container = document.getElementsByClassName('featured__container')[0]
+    container.style.backgroundImage =
+        "url('" + featuredMovie['image_url'].split('_.')[0] + "')"
+    container.setAttribute('id', featuredMovieId)
+    let name = document.getElementsByClassName('featured__name')[0]
+    name.innerHTML = featuredMovie['title']
+    addModal(container)
+    return
+}
+
+getFeaturedMovie()

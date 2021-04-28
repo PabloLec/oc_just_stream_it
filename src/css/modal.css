@@ -11,16 +11,19 @@
     animation: fadeIn 0.3s both;
 }
 
+.js-modal-stop {
+    width: 600px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    animation: slideFromTop 0.3s both;
+    position: relative;
+}
+
 .js-modal-close {
-    background-color: #131516;
-    display: inline-block;
-    padding: 0.35em 1.2em;
-    border: 0;
-    margin: 0 0.3em 0.3em 0;
-    border-radius: 0.12em;
-    box-sizing: border-box;
+    position: absolute;
+    top: -3%;
+    right: 0%;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
     font-weight: 300;
     color: #ffffff;
     text-align: center;
@@ -28,13 +31,9 @@
 }
 
 .modal-wrapper {
-    overflow: auto;
-    width: 600px;
-    max-width: calc(100vw - 20px);
-    max-height: calc(100vh - 20px);
+    width: auto;
     padding: 20px;
     background-color: #131516;
-    animation: slideFromTop 0.3s both;
     color: #d8d4cf;
 }
 
@@ -50,6 +49,20 @@
     font-size: 18px;
     margin-bottom: 5px;
     font-weight: bold;
+}
+
+.modal__summary {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal__origin,
+.modal__genre,
+.modal__director,
+.modal__actors {
+    margin-top: 10px;
 }
 
 .modal[aria-hidden='true'] {
