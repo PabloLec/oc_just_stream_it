@@ -28,7 +28,7 @@ header {
     z-index: 1;
     top: 50px;
     right: 0px;
-    padding: 0 50px 5px;
+    padding: 0 30px 5px;
     position: fixed;
     width: auto;
     height: auto;
@@ -36,6 +36,7 @@ header {
     text-align: center;
     color: #ccc;
     background: rgba(19, 21, 22, 1);
+    animation: fadeIn 0.5s both;
 }
 
 .sub__menu a {
@@ -106,4 +107,34 @@ hr {
     background-image: linear-gradient(to right, #9c9c9c, #7957ec, #9c9c9c);
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #7957ec;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

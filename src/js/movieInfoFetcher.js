@@ -136,15 +136,20 @@ async function searchFeaturedMovie(page) {
 }
 
 async function getFeaturedMovie() {
+    let container = document.getElementsByClassName('featured__container')[0]
+    container.style.display = 'none'
+    let loader = document.getElementById('loader-Featured')
+
     const featuredMovieId = await searchFeaturedMovie((page = 1))
     let featuredMovie = await queryMovieInfo(featuredMovieId)
 
-    let container = document.getElementsByClassName('featured__container')[0]
     container.style.backgroundImage =
         "url('" + featuredMovie['image_url'].split('_.')[0] + "')"
     container.setAttribute('id', featuredMovieId)
     let name = document.getElementsByClassName('featured__name')[0]
     name.innerHTML = featuredMovie['title']
+    loader.style.display = 'none'
+    container.style.display = 'block'
     addModal(container)
     return
 }

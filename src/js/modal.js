@@ -2,9 +2,7 @@ const focusableSelector = 'button, a, input, textarea'
 let modal = null
 
 const openModal = async function (id) {
-    console.log(id)
     modal = await loadModal(id)
-    console.log('OPEN MODAL')
     const movieInfo = await queryMovieInfo(id)
     populateModal(movieInfo)
     modal.style.display = null

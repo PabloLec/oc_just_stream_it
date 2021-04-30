@@ -87,9 +87,6 @@ let onReady = function () {
     }
 }
 
-if (document.readyState !== 'loading') {
-    onReady()
-}
 document.addEventListener('DOMContentLoaded', onReady)
 
 function onWindowResize() {

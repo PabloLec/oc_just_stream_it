@@ -64,6 +64,10 @@ async function queryPage(page, category) {
 }
 
 async function getCategory(category) {
+    let container = document.getElementById('carousel-' + category)
+    let loader = document.getElementById('loader-' + category)
+    container.style.display = 'none'
+    console.log(container)
     let nextPage = await queryPage(
         APIURL + 'titles/?sort_by=-year;-imdb_score,-votes&genre=' + category,
         category,
@@ -72,6 +76,8 @@ async function getCategory(category) {
     for (let i = 0; i < 5; i++) {
         nextPage = await queryPage(nextPage, category)
     }
+    loader.style.display = 'none'
+    container.style.display = 'block'
 }
 
 var genres = ['Comedy', 'Action', 'Sci-Fi']
