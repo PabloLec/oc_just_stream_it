@@ -20,9 +20,32 @@ header {
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     color: #ccc;
     background: rgba(19, 21, 22, 0.1);
+}
+
+.sub__menu {
+    z-index: 1;
+    top: 50px;
+    right: 0px;
+    padding: 0 50px 5px;
+    position: fixed;
+    width: auto;
+    height: auto;
+    font-size: 1.2em;
+    text-align: center;
+    color: #ccc;
+    background: rgba(19, 21, 22, 1);
+}
+
+.sub__menu a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.logo {
+    height: 100%;
+    left: 5%;
 }
 
 .main__container {
@@ -34,22 +57,21 @@ header {
     font-family: 'Roboto', sans-serif;
 }
 
-.logo {
-    letter-spacing: 3px;
-}
 .nav {
     display: flex;
-    justify-content: space-around;
-    width: 30%;
+    justify-content: end;
+    width: 100%;
 }
 .navlink {
     list-style: none;
-    margin: 0;
+    margin: 30;
+    padding-right: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
 }
 .navlink a {
     color: #ccc;
     text-decoration: none;
-    font-size: 1.2em;
 }
 
 .title {

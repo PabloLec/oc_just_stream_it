@@ -26,7 +26,7 @@
         <script>
             let APIURL = 'https://pablo.hd.free.fr/django/api/v1/'
         </script>
-        <script src="src/js/topbar.js" async></script>
+
         <script src="src/js/categoriesFetcher.js"></script>
         <script src="src/js/movieInfoFetcher.js" async></script>
         <script src="src/js/carousel.js" async></script>
@@ -39,14 +39,21 @@
 
     <body>
         <header id="navbar">
-            <h1 class="logo">LOGO</h1>
+            <img src="src/img/logo.png" class="logo" />
             <ul class="nav">
-                <li class="navlink"><a href="#">Home</a></li>
-                <li class="navlink"><a href="#">About</a></li>
-                <li class="navlink"><a href="#">Projects</a></li>
-                <li class="navlink"><a href="#">Contact</a></li>
+                <li class="navlink"><a href="#">Accueil</a></li>
+                <li class="navlink categories" onclick="ShowDiv()">
+                    Catégories
+                </li>
             </ul>
         </header>
+        <div class="sub__menu" id="catSubMenu" style="display: none">
+            <a href="#carousel-Comedy">Comédie</a>
+            <br />
+            <a href="#carousel-Action">Action</a>
+            <br />
+            <a href="#carousel-Sci-Fi">Science-Fiction</a>
+        </div>
 
         <div class="main__container">
             <div class="featured__container">
@@ -68,5 +75,7 @@
                 <div id="carousel-Sci-Fi"></div>
             </div>
         </div>
+
+        <script src="src/js/topbar.js" async></script>
     </body>
 </html>

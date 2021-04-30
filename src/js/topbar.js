@@ -1,8 +1,8 @@
 function fadeNav() {
     var offset = getScrollXY()
-    console.log('OFFSET', offset[1] / 100)
+    let featuredImageHeight = document.documentElement.clientHeight * 0.6
     //if y offset is greater than 0, set opacity to desired value, otherwise set to 1
-    setNavOpacity(offset[1] / 150)
+    setNavOpacity(offset[1] / featuredImageHeight)
 }
 
 function setNavOpacity(newOpacity) {
@@ -38,3 +38,11 @@ function getScrollXY() {
 }
 
 window.onscroll = fadeNav
+function ShowDiv() {
+    let actualDisplay = document.getElementById('catSubMenu').style.display
+    if (actualDisplay !== '') {
+        document.getElementById('catSubMenu').style.display = ''
+    } else {
+        document.getElementById('catSubMenu').style.display = 'none'
+    }
+}
