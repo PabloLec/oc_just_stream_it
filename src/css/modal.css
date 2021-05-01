@@ -36,38 +36,38 @@
     color: #d8d4cf;
 }
 
-.modal__header {
+.modal-header {
     text-align: center;
     font-size: 26px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.modal__global {
+.modal-global {
     text-align: center;
     font-size: 18px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.modal__summary {
+.modal-summary {
     text-align: center;
     font-size: 18px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.modal__globalinfo {
+.modal-globalinfo {
     border: 1px solid black;
     margin: 0 5px 0 5px;
     padding: 2px 5px 2px 5px;
     background-color: #1e2020;
 }
 
-.modal__origin,
-.modal__genre,
-.modal__director,
-.modal__actors {
+.modal-origin,
+.modal-genre,
+.modal-director,
+.modal-actors {
     margin-top: 10px;
 }
 

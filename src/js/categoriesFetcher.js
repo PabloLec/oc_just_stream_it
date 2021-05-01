@@ -27,7 +27,7 @@ function fetchResults(results, category) {
         movie.id = result['id']
 
         let image_div = document.createElement('div')
-        image_div.className = 'item__image'
+        image_div.className = 'item-image'
         movie.appendChild(image_div)
 
         let image = document.createElement('img')
@@ -35,22 +35,21 @@ function fetchResults(results, category) {
         image_div.appendChild(image)
 
         let body_div = document.createElement('div')
-        body_div.className = 'item__body'
+        body_div.className = 'item-body'
         movie.appendChild(body_div)
 
         let title = document.createElement('div')
-        title.className = 'item__title'
+        title.className = 'item-title'
         title.innerHTML =
             result['title'].substr(0, 20) + (this.length > 20 ? '&hellip;' : '')
         body_div.appendChild(title)
 
         let description = document.createElement('div')
-        description.className = 'item__description'
+        description.className = 'item-description'
         description.innerHTML =
             result['year'] + ' - ' + getRatingStars(result['imdb_score'])
         body_div.appendChild(description)
 
-        let carouselId = 'carousel-' + category
         document.getElementById('carousel-' + category).appendChild(movie)
         addModal(movie)
     }
@@ -67,17 +66,17 @@ async function getCategory(category) {
     let container = document.getElementById('carousel-' + category)
     let loader = document.getElementById('loader-' + category)
     container.style.display = 'none'
-    console.log(container)
     let nextPage = await queryPage(
         APIURL + 'titles/?sort_by=-year;-imdb_score,-votes&genre=' + category,
         category,
     )
 
+    loader.style.display = 'none'
+    container.style.display = 'block'
+
     for (let i = 0; i < 5; i++) {
         nextPage = await queryPage(nextPage, category)
     }
-    loader.style.display = 'none'
-    container.style.display = 'block'
 }
 
 var genres = ['Comedy', 'Action', 'Sci-Fi']

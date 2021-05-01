@@ -1,4 +1,4 @@
-.carousel__title {
+.carousel-title {
     font-size: 26px;
     margin-left: 30px;
     color: #d8d4cf;
@@ -28,20 +28,20 @@
     height: auto;
 }
 
-.item__body {
+.item-body {
     padding-bottom: 25px;
     padding-top: 25px;
     background-color: #131516;
 }
 
-.item__title {
+.item-title {
     font-size: 16px;
     margin-bottom: 5px;
     font-weight: bold;
     color: #d8d4cf;
 }
 
-.item__description {
+.item-description {
     color: #d8d4cf;
 }
 
@@ -53,23 +53,23 @@
     position: relative;
 }
 
-.carousel__container {
+.carousel-container {
     transition: transform 0.3s;
     transform: translate3d(0, 0, 0);
 }
 
-.carousel__container::after {
+.carousel-container::after {
     content: '';
     clear: both;
     display: table;
 }
 
-.carousel__item {
+.carousel-item {
     float: left;
 }
 
-.carousel__next,
-.carousel__prev {
+.carousel-next,
+.carousel-prev {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -84,13 +84,13 @@
     transition: transform 0.3s, opacity 0.3s;
 }
 
-.carousel__prev {
+.carousel-prev {
     background-image: url(left.svg);
     right: auto;
     left: 10px;
 }
 
-.carousel__next:hover,
-.carousel__prev:hover {
+.carousel-next:hover,
+.carousel-prev:hover {
     transform: scale(1.2);
 }

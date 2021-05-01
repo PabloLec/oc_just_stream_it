@@ -1,7 +1,6 @@
 function fadeNav() {
     var offset = getScrollXY()
     let featuredImageHeight = document.documentElement.clientHeight * 0.6
-    //if y offset is greater than 0, set opacity to desired value, otherwise set to 1
     setNavOpacity(offset[1] / featuredImageHeight)
 }
 
@@ -37,12 +36,14 @@ function getScrollXY() {
     return [scrOfX, scrOfY]
 }
 
-window.onscroll = fadeNav
-function ShowDiv() {
-    let actualDisplay = document.getElementById('catSubMenu').style.display
+function displaySubMenu() {
+    let subMenu = document.getElementsByClassName('cat-sub-menu')[0]
+    let actualDisplay = subMenu.style.display
     if (actualDisplay !== '') {
-        document.getElementById('catSubMenu').style.display = ''
+        subMenu.style.display = ''
     } else {
-        document.getElementById('catSubMenu').style.display = 'none'
+        subMenu.style.display = 'none'
     }
 }
+
+window.onscroll = fadeNav

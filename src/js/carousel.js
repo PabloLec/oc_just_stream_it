@@ -1,24 +1,24 @@
 class Carousel {
-    constructor(element) {
+    constructor(targetDiv) {
         var _this = this
-        this.id_list = []
-        this.element = element
-
+        this.targetDiv = targetDiv
         this.scrollStep = 2
         this.imagesVisibile = window.innerWidth / (182 + 50)
+
+        this.id_list = []
         this.items = []
         this.currentItem = 0
 
         this.root = createDivWithClass('carousel')
-        this.container = createDivWithClass('carousel__container')
+        this.container = createDivWithClass('carousel-container')
         this.root.setAttribute('tabindex', '0')
         this.root.appendChild(this.container)
-        this.element.appendChild(this.root)
+        this.targetDiv.appendChild(this.root)
 
         this.createNavButtons()
 
-        // Evenements
-        this.element.addEventListener(
+        // Add any new movie div to carousel
+        this.targetDiv.addEventListener(
             'DOMNodeInserted',
             function (e) {
                 let id = e.target.id
@@ -28,7 +28,7 @@ class Carousel {
                     _this.id_list.push(id)
                 }
                 _this.items.push(e.target)
-                let item = createDivWithClass('carousel__item')
+                let item = createDivWithClass('carousel-item')
                 item.appendChild(e.target)
                 _this.container.appendChild(item)
                 _this.setCarouselWidth()
@@ -43,8 +43,8 @@ class Carousel {
     }
 
     createNavButtons() {
-        let nextButton = createDivWithClass('carousel__next')
-        let prevButton = createDivWithClass('carousel__prev')
+        let nextButton = createDivWithClass('carousel-next')
+        let prevButton = createDivWithClass('carousel-prev')
         this.root.appendChild(nextButton)
         this.root.appendChild(prevButton)
         nextButton.addEventListener('click', this.next.bind(this))
@@ -61,7 +61,7 @@ class Carousel {
 
     gotoItem(index) {
         if (index < 0) {
-            return
+            index = this.items.length - Math.floor(this.imagesVisibile)
         } else if (
             index >= this.items.length ||
             (this.items[this.currentItem + Math.floor(this.imagesVisibile)] ===
@@ -77,9 +77,7 @@ class Carousel {
     }
 }
 
-var carousels = []
-
-let onReady = function () {
+let createCarousels = function () {
     for (var i = 0; i < genres.length; i++) {
         carousels.push(
             new Carousel(document.querySelector('#carousel-' + genres[i])),
@@ -87,7 +85,9 @@ let onReady = function () {
     }
 }
 
-document.addEventListener('DOMContentLoaded', onReady)
+var carousels = []
+
+document.addEventListener('DOMContentLoaded', createCarousels)
 
 function onWindowResize() {
     for (var i = 0; i < carousels.length; i++) {

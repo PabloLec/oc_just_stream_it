@@ -24,7 +24,7 @@ header {
     background: rgba(19, 21, 22, 0.1);
 }
 
-.sub__menu {
+.cat-sub-menu {
     z-index: 1;
     top: 50px;
     right: 0px;
@@ -39,18 +39,18 @@ header {
     animation: fadeIn 0.5s both;
 }
 
-.sub__menu a {
+.cat-sub-menu a {
     color: #ccc;
     text-decoration: none;
 }
 
 .logo {
     height: 100%;
-    left: 5%;
+    padding-left: 30px;
     filter: invert(0.5);
 }
 
-.main__container {
+.main-container {
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -61,12 +61,11 @@ header {
 
 .nav {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     width: 100%;
 }
 .navlink {
     list-style: none;
-    margin: 30;
     padding-right: 30px;
     font-size: 1.2em;
     cursor: pointer;
@@ -83,7 +82,7 @@ header {
     margin-bottom: 25px;
 }
 
-.featured__container {
+.featured-container {
     width: 100%;
     height: 60vh;
     background-position: center;
@@ -93,7 +92,7 @@ header {
     text-align: center;
 }
 
-.featured__name {
+.featured-name {
     position: absolute;
     bottom: 0%;
     left: 50%;
