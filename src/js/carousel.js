@@ -97,3 +97,11 @@ function onWindowResize() {
 }
 
 window.addEventListener('resize', onWindowResize)
+
+function populateCarousels() {
+    for (var i = 0; i < genres.length; i++) {
+        getCategory(genres[i])
+    }
+}
+
+populateCarousels()

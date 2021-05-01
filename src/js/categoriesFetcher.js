@@ -80,7 +80,3 @@ async function getCategory(category) {
 }
 
 var genres = ['Comedy', 'Action', 'Sci-Fi']
-
-for (var i = 0; i < genres.length; i++) {
-    getCategory(genres[i])
-}
