@@ -87,7 +87,7 @@ let createCarousels = function () {
 
 var carousels = []
 
-document.addEventListener('DOMContentLoaded', createCarousels)
+createCarousels()
 
 function onWindowResize() {
     for (var i = 0; i < carousels.length; i++) {

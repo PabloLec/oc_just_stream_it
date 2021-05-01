@@ -47,7 +47,6 @@ header {
 .logo {
     height: 100%;
     padding-left: 30px;
-    filter: invert(0.5);
 }
 
 .main-container {
