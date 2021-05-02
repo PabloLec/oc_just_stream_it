@@ -1,41 +1,49 @@
+/** Calculates the navbar opacity depending on featured image height.*/
 function fadeNav() {
-    var offset = getScrollXY()
+    var offset = getScrollY()
     let featuredImageHeight = document.documentElement.clientHeight * 0.6
-    setNavOpacity(offset[1] / featuredImageHeight)
+    setNavOpacity(offset / featuredImageHeight)
 }
 
+/** Sets the background opacity of the navbar.
+ *
+ * @param {number} newOpacity RGBA opacity to be set.
+ */
 function setNavOpacity(newOpacity) {
     var navBar = document.getElementById('navbar')
     navBar.style.background = 'rgba(19, 21, 22,' + newOpacity + ')'
 }
 
-function getScrollXY() {
-    var scrOfX = 0,
-        scrOfY = 0
+/**  Gets current Y scroll offset.
+ *
+ * @return {number} Y offset.
+ */
+function getScrollY() {
+    var scrollY = 0
     if (typeof window.pageYOffset == 'number') {
         //Netscape compliant
-        scrOfY = window.pageYOffset
-        scrOfX = window.pageXOffset
+        scrollY = window.pageYOffset
     } else if (
         document.body &&
         (document.body.scrollLeft || document.body.scrollTop)
     ) {
         //DOM compliant
-        scrOfY = document.body.scrollTop
-        scrOfX = document.body.scrollLeft
+        scrollY = document.body.scrollTop
     } else if (
         document.documentElement &&
         (document.documentElement.scrollLeft ||
             document.documentElement.scrollTop)
     ) {
         //IE6 standards compliant mode
-        scrOfY = document.documentElement.scrollTop
-        scrOfX = document.documentElement.scrollLeft
+        scrollY = document.documentElement.scrollTop
     }
 
-    return [scrOfX, scrOfY]
+    return scrollY
 }
 
+/**  Called on "Categories" topbar button click. Displays
+ *   the categories sub menu or hide it if already displayed.
+ */
 function displaySubMenu() {
     let subMenu = document.getElementsByClassName('cat-sub-menu')[0]
     let actualDisplay = subMenu.style.display

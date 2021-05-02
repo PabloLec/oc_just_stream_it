@@ -5,14 +5,11 @@
 }
 
 .item {
-    margin: 40px 10px;
-    margin-left: 50px;
-    background-color: #fff;
+    margin: 40px 30px;
     box-shadow: 0 15px 35px #3232321a, 0 5px 15px #0000001a;
     transition: transform 0.5s;
     transform: translate3d(0, -2px, 0);
     text-align: center;
-    overflow: hidden;
 }
 
 .item:hover {
@@ -45,10 +42,6 @@
     color: #d8d4cf;
 }
 
-.items {
-    position: relative;
-}
-
 .carousel {
     position: relative;
 }
@@ -73,7 +66,7 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background: #fff url(right.svg) center center no-repeat;
+    background: #d8d4cf url(right.svg) center center no-repeat;
     background-size: 20px 20px;
     border-radius: 50%;
     top: 50%;

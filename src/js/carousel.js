@@ -1,4 +1,8 @@
+/** A carousel builder for categories' movies display. */
 class Carousel {
+    /**
+     * @param {object} targetDiv DOM div to create the carousel in.
+     */
     constructor(targetDiv) {
         var _this = this
         this.targetDiv = targetDiv
@@ -9,8 +13,8 @@ class Carousel {
         this.items = []
         this.currentItem = 0
 
-        this.root = createDivWithClass('carousel')
-        this.container = createDivWithClass('carousel-container')
+        this.root = createElementWithClass('div', 'carousel')
+        this.container = createElementWithClass('div', 'carousel-container')
         this.root.setAttribute('tabindex', '0')
         this.root.appendChild(this.container)
         this.targetDiv.appendChild(this.root)
@@ -28,7 +32,7 @@ class Carousel {
                     _this.id_list.push(id)
                 }
                 _this.items.push(e.target)
-                let item = createDivWithClass('carousel-item')
+                let item = createElementWithClass('div', 'carousel-item')
                 item.appendChild(e.target)
                 _this.container.appendChild(item)
                 _this.setCarouselWidth()
@@ -37,28 +41,38 @@ class Carousel {
         )
     }
 
+    /** Sets sufficient carousel width to hide overflow depending
+     * on browser window width.
+     */
     setCarouselWidth() {
         let ratio = this.items.length / this.imagesVisibile + 1
         this.container.style.width = ratio * 100 + '%'
     }
 
+    /** Creates left and right nav buttons. */
     createNavButtons() {
-        let nextButton = createDivWithClass('carousel-next')
-        let prevButton = createDivWithClass('carousel-prev')
+        let nextButton = createElementWithClass('div', 'carousel-next')
+        let prevButton = createElementWithClass('div', 'carousel-prev')
         this.root.appendChild(nextButton)
         this.root.appendChild(prevButton)
         nextButton.addEventListener('click', this.next.bind(this))
         prevButton.addEventListener('click', this.prev.bind(this))
     }
 
+    /** Called on right nav button click. */
     next() {
         this.gotoItem(this.currentItem + this.scrollStep)
     }
 
+    /** Called on left nav button click. */
     prev() {
         this.gotoItem(this.currentItem - this.scrollStep)
     }
 
+    /** Translates the carousel to required item.
+     *
+     * @param {number} index Carousel item index to go to.
+     */
     gotoItem(index) {
         if (index < 0) {
             index = this.items.length - Math.floor(this.imagesVisibile)
@@ -77,18 +91,25 @@ class Carousel {
     }
 }
 
-let createCarousels = function () {
-    for (var i = 0; i < genres.length; i++) {
+/** Creates a carousel for every element present in
+ * CATEGORIES array.
+ */
+function createCarousels() {
+    for (var i = 0; i < CATEGORIES.length; i++) {
         carousels.push(
-            new Carousel(document.querySelector('#carousel-' + genres[i])),
+            new Carousel(document.querySelector('#carousel-' + CATEGORIES[i])),
         )
     }
 }
 
-var carousels = []
+/** Calls the API Fetch to populate the carousels. */
+function populateCarousels() {
+    for (var i = 0; i < CATEGORIES.length; i++) {
+        getCategory(CATEGORIES[i])
+    }
+}
 
-createCarousels()
-
+/** Reset every carousel's width on window resize. */
 function onWindowResize() {
     for (var i = 0; i < carousels.length; i++) {
         carousels[i].imagesVisibile = window.innerWidth / (182 + 50)
@@ -98,10 +119,9 @@ function onWindowResize() {
 
 window.addEventListener('resize', onWindowResize)
 
-function populateCarousels() {
-    for (var i = 0; i < genres.length; i++) {
-        getCategory(genres[i])
-    }
-}
+// Array of created carousels, useful for dynamic resizing.
+var carousels = []
+
+createCarousels()
 
 populateCarousels()

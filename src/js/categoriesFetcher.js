@@ -1,9 +1,26 @@
-function createDivWithClass(className) {
-    let div = document.createElement('div')
+/** Categories displayed in carousels on index page.*/
+const CATEGORIES = ['Comedy', 'Action', 'Sci-Fi']
+
+/** Helper function to create a DOM element and set
+ * its class in a single line.
+ *
+ * @param {string} tag Element tag.
+ * @param {string} className Class name to be set.
+ * @return {object} Created div.
+ */
+function createElementWithClass(tag, className) {
+    let div = document.createElement(tag)
     div.setAttribute('class', className)
     return div
 }
 
+/** Helper function to transform a rating out of ten
+ * into an out of five visual star rating using
+ * font awesome stars.
+ *
+ * @param {number} rating Movie rating /10.
+ * @return {string} Corresponding fa stars.
+ */
 function getRatingStars(rating) {
     let roundedRating = Math.ceil(rating * 2) / 4
 
@@ -20,32 +37,33 @@ function getRatingStars(rating) {
     return starRating
 }
 
-function fetchResults(results, category) {
+/** Takes a results array corresponding to movies details
+ * then creates their cards into the carousel.
+ *
+ * @param {array} results Movies details.
+ * @param {string} category Movies category.
+ */
+function createMoviesCards(results, category) {
     for (const result of results) {
-        let movie = document.createElement('div')
-        movie.className = 'item'
+        let movie = createElementWithClass('div', 'item')
         movie.id = result['id']
 
-        let image_div = document.createElement('div')
-        image_div.className = 'item-image'
+        let image_div = createElementWithClass('div', 'item-image')
         movie.appendChild(image_div)
 
         let image = document.createElement('img')
         image.src = result['image_url']
         image_div.appendChild(image)
 
-        let body_div = document.createElement('div')
-        body_div.className = 'item-body'
+        let body_div = createElementWithClass('div', 'item-body')
         movie.appendChild(body_div)
 
-        let title = document.createElement('div')
-        title.className = 'item-title'
+        let title = createElementWithClass('div', 'item-title')
         title.innerHTML =
             result['title'].substr(0, 20) + (this.length > 20 ? '&hellip;' : '')
         body_div.appendChild(title)
 
-        let description = document.createElement('div')
-        description.className = 'item-description'
+        let description = createElementWithClass('div', 'item-description')
         description.innerHTML =
             result['year'] + ' - ' + getRatingStars(result['imdb_score'])
         body_div.appendChild(description)
@@ -55,13 +73,24 @@ function fetchResults(results, category) {
     }
 }
 
+/** Fetch a result page from API and calls corresponding
+ * cards creation.
+ *
+ * @param {number} page Current page number.
+ * @param {string} category Category to be fetched.
+ * @return {number} Next page to be fetched.
+ */
 async function queryPage(page, category) {
     let response = await fetch(page)
     let data = await response.json()
-    fetchResults(data['results'], category)
+    createMoviesCards(data['results'], category)
     return data['next']
 }
 
+/** Handles the whole fetching process and loading spinner display.
+ *
+ * @param {string} category Category to be fetched.
+ */
 async function getCategory(category) {
     let container = document.getElementById('carousel-' + category)
     let loader = document.getElementById('loader-' + category)
@@ -78,5 +107,3 @@ async function getCategory(category) {
         nextPage = await queryPage(nextPage, category)
     }
 }
-
-var genres = ['Comedy', 'Action', 'Sci-Fi']

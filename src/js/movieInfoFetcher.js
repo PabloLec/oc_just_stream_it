@@ -1,9 +1,21 @@
-async function queryMovieInfo(id) {
+/** Fetches a movie details from API.
+ *
+ * @param {number} id Unique id of movie to be fetched.
+ * @return {object} Movie details fetched from API.
+ */
+async function queryMovieDetails(id) {
     const response = await fetch(APIURL + 'titles/' + id)
     const data = await response.json()
+    console.log(typeof data)
     return data
 }
 
+/** Searches in a result page for a suitable movie
+ *  to be featured in index page.
+ *
+ * @param {number} page Page number to be searched in.
+ * @return {number} Featured movie unique id.
+ */
 async function searchFeaturedMovie(page) {
     const response = await fetch(
         APIURL + 'titles/?page=' + page + '&sort_by=-year,-imdb_score,-votes',
@@ -17,13 +29,16 @@ async function searchFeaturedMovie(page) {
     }
 }
 
+/** Creates the div on index page for featured
+ *  movie display.
+ */
 async function createFeaturedMovieDiv() {
     let container = document.getElementsByClassName('featured-container')[0]
     container.style.display = 'none'
     let loader = document.getElementById('loader-Featured')
 
     const featuredMovieId = await searchFeaturedMovie((page = 1))
-    let featuredMovie = await queryMovieInfo(featuredMovieId)
+    let featuredMovie = await queryMovieDetails(featuredMovieId)
 
     container.style.backgroundImage =
         "url('" + featuredMovie['image_url'].split('_.')[0] + "')"
