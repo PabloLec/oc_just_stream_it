@@ -1,2 +1,6 @@
 .prettierrc
 .vscode
+node_modules/
+production.css
+production.js
+package-lock.json

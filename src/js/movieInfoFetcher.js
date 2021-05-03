@@ -6,7 +6,6 @@
 async function queryMovieDetails(id) {
     const response = await fetch(APIURL + 'titles/' + id)
     const data = await response.json()
-    console.log(typeof data)
     return data
 }
 

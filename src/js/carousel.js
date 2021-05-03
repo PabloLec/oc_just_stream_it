@@ -22,23 +22,24 @@ class Carousel {
         this.createNavButtons()
 
         // Add any new movie div to carousel
-        this.targetDiv.addEventListener(
-            'DOMNodeInserted',
-            function (e) {
-                let id = e.target.id
-                if (_this.id_list.includes(id) || id.length === 0) {
-                    return
-                } else {
-                    _this.id_list.push(id)
+        var newMovieObserver = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                for (var i = 0; i < mutation.addedNodes.length; i++) {
+                    let id = mutation.addedNodes[i].id
+                    if (_this.id_list.includes(id) || id.length === 0) {
+                        return
+                    } else {
+                        _this.id_list.push(id)
+                    }
+                    _this.items.push(mutation.addedNodes[i])
+                    let item = createElementWithClass('div', 'carousel-item')
+                    item.appendChild(mutation.addedNodes[i])
+                    _this.container.appendChild(item)
+                    _this.setCarouselWidth()
                 }
-                _this.items.push(e.target)
-                let item = createElementWithClass('div', 'carousel-item')
-                item.appendChild(e.target)
-                _this.container.appendChild(item)
-                _this.setCarouselWidth()
-            },
-            false,
-        )
+            })
+        })
+        newMovieObserver.observe(this.targetDiv, { childList: true })
     }
 
     /** Sets sufficient carousel width to hide overflow depending
