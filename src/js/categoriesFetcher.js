@@ -1,5 +1,5 @@
 /** Categories displayed in carousels on index page.*/
-const CATEGORIES = ['Comedy', 'Action', 'Sci-Fi']
+const CATEGORIES = ['TopRated', 'Comedy', 'Action', 'Sci-Fi']
 
 /** Helper function to create a DOM element and set
  * its class in a single line.
@@ -95,10 +95,13 @@ async function getCategory(category) {
     let container = document.getElementById('carousel-' + category)
     let loader = document.getElementById('loader-' + category)
     container.style.display = 'none'
-    let nextPage = await queryPage(
-        APIURL + 'titles/?sort_by=-year;-imdb_score,-votes&genre=' + category,
-        category,
-    )
+
+    let firstPage = APIURL + 'titles/?sort_by=-year;-imdb_score,-votes'
+    if (category != 'TopRated') {
+        firstPage += '&genre=' + category
+    }
+
+    let nextPage = await queryPage(firstPage, category)
 
     loader.style.display = 'none'
     container.style.display = 'block'

@@ -226,21 +226,32 @@ const openModal = async function (id) {
  * @param {object} e Click object.
  */
 const closeModal = function (e) {
+    // Return if the users does not click outside the modal or on close button.
+    if (
+        (e.target.className != 'modal') &
+        !e.target.classList.contains('modal-close')
+    )
+        return
     if (modal === null) return
-    modal.querySelector('.modal-wrapper').innerHTML =
-        '<div class="loader" id="loader-Modal" style="display: none">'
+
     e.preventDefault()
-    modal.setAttribute('aria-hidden', 'true')
-    modal.removeAttribute('aria-modal')
+
     modal.removeEventListener('click', closeModal)
     modal.querySelector('.modal-close').removeEventListener('click', closeModal)
 
     const hideModal = function () {
         modal.style.display = 'none'
+
+        modal.removeAttribute('aria-modal')
         modal.removeEventListener('animationend', hideModal)
+
+        modal.querySelector('.modal-wrapper').innerHTML =
+            '<div class="loader" id="loader-Modal" style="display: none">'
         modal = null
     }
     modal.addEventListener('animationend', hideModal)
+
+    modal.setAttribute('aria-hidden', 'true')
 }
 
 /** Loads the modal element from its HTML file.
