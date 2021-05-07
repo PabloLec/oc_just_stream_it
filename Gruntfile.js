@@ -6,8 +6,7 @@ module.exports = function (grunt) {
             js: {
                 src: [
                     'src/js/topbar.js',
-                    'src/js/categoriesFetcher.js',
-                    'src/js/movieInfoFetcher.js',
+                    'src/js/fetcher.js',
                     'src/js/carousel.js',
                     'src/js/modal.js',
                 ],

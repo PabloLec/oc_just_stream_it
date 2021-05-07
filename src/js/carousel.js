@@ -104,7 +104,7 @@ function createCarousels() {
 }
 
 /** Calls the API Fetch to populate the carousels. */
-function populateCarousels() {
+async function populateCarousels() {
     for (var i = 0; i < CATEGORIES.length; i++) {
         getCategory(CATEGORIES[i])
     }
