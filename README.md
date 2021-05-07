@@ -1,4 +1,4 @@
-# oc_just_stream_it [![GitHub release (latest by date)](https://img.shields.io/github/v/release/pablolec/oc_just_stream_it)](https://github.com/PabloLec/oc_just_stream_it/releases/) [![GitHub](https://img.shields.io/github/license/pablolec/oc_chess_club)](https://github.com/PabloLec/oc_chess_club/blob/main/LICENCE)
+# oc_just_stream_it [![GitHub release (latest by date)](https://img.shields.io/github/v/release/pablolec/oc_just_stream_it)](https://github.com/PabloLec/oc_just_stream_it/releases/) [![GitHub](https://img.shields.io/github/license/pablolec/oc_just_stream_it)](https://github.com/PabloLec/oc_just_stream_it/blob/main/LICENCE)
 
 <p align="center">
   <img width="300" src="src/img/logo_readme.png">
