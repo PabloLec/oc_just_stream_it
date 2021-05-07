@@ -7,7 +7,7 @@ class Carousel {
         var _this = this
         this.targetDiv = targetDiv
         this.scrollStep = 2
-        this.imagesVisibile = window.innerWidth / (182 + 50)
+        this.imagesVisible = window.innerWidth / (182 + 50)
 
         this.id_list = []
         this.items = []
@@ -46,7 +46,7 @@ class Carousel {
      * on browser window width.
      */
     setCarouselWidth() {
-        let ratio = this.items.length / this.imagesVisibile + 1
+        let ratio = this.items.length / this.imagesVisible + 1
         this.container.style.width = ratio * 100 + '%'
     }
 
@@ -76,10 +76,10 @@ class Carousel {
      */
     gotoItem(index) {
         if (index < 0) {
-            index = this.items.length - Math.floor(this.imagesVisibile)
+            index = this.items.length - Math.floor(this.imagesVisible)
         } else if (
             index >= this.items.length ||
-            (this.items[this.currentItem + Math.floor(this.imagesVisibile)] ===
+            (this.items[this.currentItem + Math.floor(this.imagesVisible)] ===
                 undefined &&
                 index > this.currentItem)
         ) {
@@ -113,7 +113,7 @@ async function populateCarousels() {
 /** Reset every carousel's width on window resize. */
 function onWindowResize() {
     for (var i = 0; i < carousels.length; i++) {
-        carousels[i].imagesVisibile = window.innerWidth / (182 + 50)
+        carousels[i].imagesVisible = window.innerWidth / (182 + 50)
         carousels[i].setCarouselWidth()
     }
 }
